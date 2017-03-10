@@ -1,22 +1,107 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
+<!DOCTYPE html>
+<html lang="en">
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=contacts;charset=utf8mb4", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
-    }
-catch(PDOException $e)
-    {
-    echo "Connection failed: " . $e->getMessage();
-    }
+<head>
 
-    $sql = 'SELECT first, last FROM contacts ORDER BY first';
-    foreach ($conn->query($sql) as $row) {
-        print $row['first'] . "\t";
-        print $row['last'] . "\n";
-    }
-?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+
+    <!-- Fonts -->
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- Bootstrap Material Design -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-material-design.css">
+  <link rel="stylesheet" type="text/css" href="/css/ripples.min.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+<body>
+  <div class="bs-component">
+          <div id="override" class="navbar navbar-inverse">
+            <div class="container-fluid">
+
+              <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <ul class="nav navbar-nav">
+                  <li><a href="#menu-toggle" id="menu-toggle"><span class="glyphicon">&#xe236;</span></a></li>
+
+                </ul>
+                <form class="navbar-form navbar-right">
+                  <div class="form-group is-empty">
+                    <input type="text" class="form-control col-md-8" placeholder="Search">
+                  </div>
+                </form>
+                <ul class="nav navbar-nav navbar-left">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="javascript:void(0)">Contact Manager</a>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
+
+
+
+
+
+    <div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    Groups
+                </li>
+                <li>
+                    <a href="#">All Contacts (100)</a>
+                </li>
+                <li>
+                    <a href="#">Friends (20)</a>
+                </li>
+                <li>
+                    <a href="#">+ Add New Group</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/js/material.js"></script>
+    <script src="/js/ripples.min.js"></script>
+    <!-- Menu Toggle Script -->
+    <script>
+    $.material.init();
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
