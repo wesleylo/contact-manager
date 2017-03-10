@@ -33,7 +33,7 @@
 
               <div class="navbar-collapse collapse navbar-inverse-collapse">
                 <ul class="nav navbar-nav">
-                  <li><a href="#menu-toggle" id="menu-toggle"><span class="glyphicon">&#xe236;</span></a></li>
+                  <li><a href="#menu-toggle" id="menu-toggle"><i class="material-icons">dehaze</i></a></li>
 
                 </ul>
                 <form class="navbar-form navbar-right">
@@ -49,7 +49,6 @@
               </div>
             </div>
           </div>
-        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
 
 
 
@@ -64,13 +63,13 @@
                     Groups
                 </li>
                 <li>
-                    <a href="#">All Contacts (100)</a>
+                    <a href="#"><i class="material-icons">contacts</i> All Contacts (100)</a>
                 </li>
                 <li>
-                    <a href="#">Friends (20)</a>
+                    <a href="#"><i class="material-icons">group</i> Friends (20)</a>
                 </li>
                 <li>
-                    <a href="#">+ Add New Group</a>
+                    <a href="#"><i class="material-icons">group_add</i> Add New Group</a>
                 </li>
             </ul>
         </div>
@@ -80,8 +79,20 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        
+                    <div class="col-lg-1">
+                        A
+                    </div>
+                    <div class="col-lg-1">
+                        Pic
+                    </div>
+                    <div class="col-lg-2">
+                        Anna Apple
+                    </div>
+                    <div class="col-lg-3">
+                        a.apple@gmail.com
+                    </div>
+                    <div class="col-lg-3">
+                        19191234567
                     </div>
                 </div>
             </div>

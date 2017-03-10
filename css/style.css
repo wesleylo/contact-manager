@@ -5,6 +5,9 @@ body {
 .navbar {
   margin-bottom: 0px;
 }
+#override .navbar {
+  background-color: #2a56c6;
+}
 
 .navbar-brand {
   display: inline-block;
