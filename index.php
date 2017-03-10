@@ -1,3 +1,4 @@
+<?php include_once 'dbconfig.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,18 +97,31 @@
               19191234567
             </div>
           </div>
-          <?php
-                  //  include 'database.php';
-                  //  $pdo = Database::connect();
-                  //  $contacts = $db->query('SELECT * FROM contacts ORDER BY first')->fetchAll(PDO::FETCH_ASSOC);
-                  //  foreach ($pdo->query($sql) as $row) {
-                  //           echo '<tr>';
-                  //           echo '<td>'. $row['name'] . '</td>';
-                  //           echo '<td>'. $row['email'] . '</td>';
-                  //           echo '<td>'. $row['mobile'] . '</td>';
-                  //           echo '</tr>';
-                  //  }
-            ?>
+          <!-- Insert contacts from DB here -->
+          <div class="container">
+            <table class='table table-bordered table-responsive'>
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>E - mail ID</th>
+                <th>Contact No</th>
+                <th colspan="2" align="center">Actions</th>
+              </tr>
+              <?php
+              $query = "SELECT * FROM contacts";
+              $records_per_page=3;
+              $newquery = $crud->paging($query,$records_per_page);
+              $crud->dataview($newquery);
+              ?>
+              <tr>
+                <td colspan="7" align="center">
+                  <div class="pagination-wrap">
+                    <?php $crud->paginglink($query,$records_per_page); ?>
+                  </div>
+                </td>
+              </tr>
+              <!-- End insert contacts -->
         </div>
 
         <div container>
