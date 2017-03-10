@@ -1,4 +1,9 @@
 <?php
+error_reporting(E_ALL);
+
+if (!ini_get('display_errors')) {
+ ini_set('display_errors', 1);
+}
 // modified from http://www.codingcage.com/2015/04/php-pdo-crud-tutorial-using-oop-with.html
 class crud
 {
@@ -13,11 +18,11 @@ class crud
   {
     try
     {
-      $stmt = $this->db->prepare("INSERT INTO contacts(first_name,last_name,email_id,contact_no) VALUES(:fname, :lname, :email, :phone)");
+      $stmt = $this->db->prepare("INSERT INTO contacts(fname, lname, email, phone) VALUES(:fname, :lname, :email, :phone)"); //remember to add all columns
       $stmt->bindparam(":fname",$fname);
       $stmt->bindparam(":lname",$lname);
       $stmt->bindparam(":email",$email);
-      $stmt->bindparam(":contact",$phone);
+      $stmt->bindparam(":phone",$phone);
       $stmt->execute();
       return true;
     }

@@ -128,7 +128,7 @@
         </div>
 
         <div container>
-        <form action="create2.php" method="post" class="form-horizontal">
+        <form action="create.php" method="post" class="form-horizontal">
           <fieldset>
             <legend>Create Contact</legend>
 
@@ -180,7 +180,7 @@
             </div>
             <div class="row">
               <div class="form-group">
-                <label for="inputFirst" class="col-md-1 control-label">Name</label>
+                <label for="inputFirst" class="col-md-1 control-label"></label>
                 <div class="col-md-2">
                   <input type="text" class="form-control" name="city" placeholder="City">
                 </div>

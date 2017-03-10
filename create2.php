@@ -8,6 +8,7 @@ echo("Last name: " . $_POST['title'] . "<br />\n");
 echo("Last name: " . $_POST['email'] . "<br />\n");
 echo("Last name: " . $_POST['phone'] . "<br />\n");
 echo("Last name: " . $_POST['address'] . "<br />\n");
+echo("Last name: " . $_POST['city'] . "<br />\n");
 echo("Last name: " . $_POST['state'] . "<br />\n");
 echo("Last name: " . $_POST['zip'] . "<br />\n");
 echo("Last name: " . $_POST['notes'] . "<br />\n");
