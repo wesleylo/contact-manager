@@ -1,40 +1,22 @@
 <?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
 
-  include 'header.php';
-  $sort = array_key_exists('sort', $_GET) ? $_GET['sort'] : null;
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=contacts;charset=utf8mb4", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
 
-  if ($sort !== null) {
-    $tasks = $db->query('SELECT * FROM tasks ORDER BY priority ' . $sort)->fetchAll(PDO::FETCH_ASSOC);
-  } else {
-    $tasks = $db->query('SELECT * FROM tasks')->fetchAll(PDO::FETCH_ASSOC);
-  }
-
+    $sql = 'SELECT first, last FROM contacts ORDER BY first';
+    foreach ($conn->query($sql) as $row) {
+        print $row['first'] . "\t";
+        print $row['last'] . "\n";
+    }
 ?>
-
-<?php if (array_key_exists('deleted', $_GET)) : ?>
-<div class="alert alert-danger">
-  <p><strong>Task Deleted!</strong> The task was removed.</p>
-</div>
-<?php endif; ?>
-
-<h1>All Tasks <span class="text-muted">(<?= count($tasks); ?>)</span></h1>
-<table class="table table-hover">
-  <thead>
-    <th>ID</th>
-    <th>Title</th>
-    <th><a href="/index.php?sort=<?= ($sort === null || $sort === 'desc') ? 'asc' : 'desc'; ?>">Priority</a></th>
-    <th>Completed</th>
-  </thead>
-  <tbody>
-    <?php foreach($tasks as $task) : ?>
-    <tr>
-      <td><a href="/edit.php?id=<?= $task['id']; ?>"><?= $task['id']; ?></a></td>
-      <td><a href="/edit.php?id=<?= $task['id']; ?>"><?= $task['title']; ?></a></td>
-      <td><a href="/edit.php?id=<?= $task['id']; ?>"><?= $task['priority']; ?></a></td>
-      <td><a href="/edit.php?id=<?= $task['id']; ?>"><?= ($task['completed'] == 1) ? '&check;' : ''; ?></a></td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
-
-<?php include 'footer.php'; ?>
