@@ -14,7 +14,7 @@
     $zip = $_POST['zip'];
     $notes = $_POST['notes'];
 
-   if($crud->create($fname,$lname,$email,$phone))
+   if($crud->create($fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes))
    {
     header("Location: create.php?inserted");
    }

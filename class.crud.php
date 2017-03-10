@@ -14,15 +14,22 @@ class crud
     $this->db = $conn;
   }
 
-  public function create($fname,$lname,$email,$phone)
+  public function create($fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes)
   {
     try
     {
-      $stmt = $this->db->prepare("INSERT INTO contacts(fname, lname, email, phone) VALUES(:fname, :lname, :email, :phone)"); //remember to add all columns
-      $stmt->bindparam(":fname",$fname);
+      $stmt = $this->db->prepare("INSERT INTO contacts(fname, lname, company, title, email, phone, address, city, state, zip, notes) VALUES(:fname, :lname, :company, :title, :email, :phone, :address, :city, :state, :zip, :notes)");
+      $stmt->bindparam(":fname",$fname); // as of now, fields can not be left blank, may change later?
       $stmt->bindparam(":lname",$lname);
+      $stmt->bindparam(":company",$company);
+      $stmt->bindparam(":title",$title);
       $stmt->bindparam(":email",$email);
       $stmt->bindparam(":phone",$phone);
+      $stmt->bindparam(":address",$address);
+      $stmt->bindparam(":city",$city);
+      $stmt->bindparam(":state",$state);
+      $stmt->bindparam(":zip",$zip);
+      $stmt->bindparam(":notes",$notes);
       $stmt->execute();
       return true;
     }
