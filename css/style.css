@@ -1,19 +1,58 @@
 body {
    overflow-x: hidden;
+    background-color: #fff;
+    color: rgba(0,0,0,0.87);
+    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+}
+.container-fluid {
+    padding-right: 20px;
+    padding-left: 0px;
+  }
+.all-contacts:before {
+  content:
+}
+.brand-padding {
+  padding-left: 9px;
+}
+.first-letter {
+  color: #2a56c6;
+    float: left;
+    height: 40px;
+    font-size: 18px;
+font-weight: 700;
 }
 
 .navbar {
   margin-bottom: 0px;
 }
-#override .navbar {
-  background-color: #2a56c6;
+.navbar-form {
+      padding-top: -2px;
 }
-
+.material-icons {
+  padding-left: -10px;
+}
+.group {
+  box-sizing: border-box;
+color: rgba(0,0,0,0.87);
+font: 500 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+}
 .navbar-brand {
   display: inline-block;
 font-family: 'Product Sans',Arial,sans-serif;
 font-size: 22px;
 line-height: 24px;
+margin-left: 32px;
+
+}
+.navbar-header {
+  padding-top: 2px;
+}
+.sidebar-nav > .material-icons {
+  font-family: 'Material Icons Extended';
+font-weight: normal;
+font-style: normal;
+font-size: 20px;
+      color: #616161;
 }
 /* Toggle Styles */
 
@@ -77,14 +116,16 @@ line-height: 24px;
 }
 
 .sidebar-nav li a {
+  color: rgba(0,0,0,0.87);
    display: block;
-   text-decoration: none;
-   color: #999999;
+   font-weight: 500;
+   font-size: 13px;
+   outline: 0;
+   overflow: hidden;
 }
 
 .sidebar-nav li a:hover {
    text-decoration: none;
-   color: #fff;
    background: rgba(255,255,255,0.2);
 }
 

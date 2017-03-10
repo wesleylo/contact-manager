@@ -5,7 +5,7 @@ include 'database.php';
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Todo Application</title>
+    <title>Contact Manager</title>
     <!-- charset -->
     <meta charset="utf-8">
 

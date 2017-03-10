@@ -1,9 +1,16 @@
 <?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
 
-  error_reporting(E_ALL);
-
-  if (!ini_get('display_errors')) {
-    ini_set('display_errors', '1');
-  }
-
-  $db = new PDO('mysql:host=localhost;dbname=app;charset=utf8mb4', 'root', 'root');
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=contacts;charset=utf8mb4", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
+?>
