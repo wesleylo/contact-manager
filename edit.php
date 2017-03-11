@@ -1,66 +1,133 @@
+<?php include 'header.php';?>
+
 <?php
+if(isset($_POST['btn-update']))
+{
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $company = $_POST['company'];
+  $title = $_POST['title'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone'];
+  $address = $_POST['address'];
+  $city = $_POST['city'];
+  $state = $_POST['state'];
+  $zip = $_POST['zip'];
+  $notes = $_POST['notes'];
 
-  include 'header.php';
-  $id = $_GET['id'];
-
-  $stmt = $db->prepare('SELECT * from tasks WHERE id = :id LIMIT 1');
-  $stmt->bindParam(':id', $id);
-  $stmt->execute();
-
-  $task = $stmt->fetch(PDO::FETCH_ASSOC);
-
+  if($crud->create($fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes))
+  {
+    // header("Location: index.php?page=".$total_no_of_pages."");
+  }
+  else
+  {
+    header("Location: index.php?failure");
+  }
+}
 ?>
-
-<?php if (array_key_exists('updated', $_GET)) : ?>
-<div class="alert alert-success">
-  <p><strong>Update successful!</strong> Your task was updated.</p>
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h4 class="modal-title">Create New Contact</h4>
 </div>
-<?php endif; ?>
+<div class="modal-body">
+  <form action="create.php" method="post" class="form-horizontal">
+    <fieldset>
+      <div class="row">
+        <div class="form-group">
+          <label for="inputFname" class="col-md-1 control-label">Name</label>
+          <div class="col-md-3">
+            <input type="text" class="form-control" name="fname" placeholder="First Name">
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="form-control" name="lname" placeholder="Last Name">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="inputFirst" class="col-md-1 control-label">Company</label>
+          <div class="col-md-2">
+            <input type="text" class="form-control" name="company" placeholder="Company">
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" name="title" placeholder="Job Title">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="inputFirst" class="col-md-1 control-label">Email</label>
+          <div class="col-md-6">
+            <input type="email" class="form-control" name="email" placeholder="Email">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="inputFirst" class="col-md-1 control-label">Phone</label>
+          <div class="col-md-6">
+            <input type="text" class="form-control" name="phone" placeholder="Phone">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="inputFirst" class="col-md-1 control-label">Address</label>
+          <div class="col-md-6">
+            <input type="text" class="form-control" name="address" placeholder="Address">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="inputFirst" class="col-md-1 control-label"></label>
+          <div class="col-md-2">
+            <input type="text" class="form-control" name="city" placeholder="City">
+          </div>
+          <div class="col-md-2">
+            <select id="inputState" class="form-control" name="state">
+              <span style="color:#d2d2d2"><option value="" hidden="true" disabled selected>State</option></span>
+              <option>NC</option>
+              <option>SC</option>
+              <option>TN</option>
+              <option>VA</option>
+              <option>GA</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="form-control" name="zip" placeholder="Zip">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="notes" class="col-md-1 control-label">Notes</label>
 
-<?php if (array_key_exists('created', $_GET)) : ?>
-<div class="alert alert-info">
-  <p><strong>Task created!</strong> Your task was successfully created.</p>
-</div>
-<?php endif; ?>
-
-<a href="/delete.php?id=<?= $task['id']; ?>" class="btn btn-danger btn-xs pull-right btn-delete">Delete Task</a>
-<h1>Edit Task</h1>
-
-<form method="POST" action="/update.php">
-  <input type="hidden" name="id" id="task_id" value="<?= $task['id']; ?>" />
-
-  <div class="form-group">
-    <label for="task_title">Title</label>
-    <input class="form-control" type="text" name="title" id="task_title" value="<?= $task['title']; ?>" />
+          <div class="col-md-6">
+            <textarea class="form-control" rows="3" name="notes" placeholder="Notes"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="group" class="col-md-1 control-label">Groups</label> <!--Will implement later-->
+          <div class="col-md-6">
+            <div class="togglebutton">
+              <label>
+                <input type="checkbox" checked> Friends
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row"></div>
+        <div class="modal-footer form-group">
+          <div class="col-md-7 col-md-offset-5">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <!-- <input type="submit" name="btn-save" class="btn btn-primary" value="Save"/> -->
+            <button type="button submit" name="btn-save" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
   </div>
-
-  <div class="form-group">
-    <label for="task_description">Description</label>
-    <textarea class="form-control" name="description" id="task_description"><?= $task['description']; ?></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="task_priority">Priority</label>
-    <select name="priority" id="task_priority" value="<?= $task['priority']; ?>" class="form-control">
-      <option value="1"<?= ($task['priority'] == 1) ? ' selected' : '' ?>>1</option>
-      <option value="2"<?= ($task['priority'] == 2) ? ' selected' : '' ?>>2</option>
-      <option value="3"<?= ($task['priority'] == 3) ? ' selected' : '' ?>>3</option>
-      <option value="4"<?= ($task['priority'] == 4) ? ' selected' : '' ?>>4</option>
-      <option value="5"<?= ($task['priority'] == 5) ? ' selected' : '' ?>>5</option>
-      <option value="6"<?= ($task['priority'] == 6) ? ' selected' : '' ?>>6</option>
-      <option value="7"<?= ($task['priority'] == 7) ? ' selected' : '' ?>>7</option>
-      <option value="8"<?= ($task['priority'] == 8) ? ' selected' : '' ?>>8</option>
-      <option value="9"<?= ($task['priority'] == 9) ? ' selected' : '' ?>>9</option>
-    </select>
-  </div>
-
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" name="completed" value="1"<?= ($task['completed'] == 1) ? ' checked' : ''; ?>> Completed
-    </label>
-  </div>
-
-  <button class="btn btn-primary">Save Task</button>
-</form>
-
-<?php include 'footer.php'; ?>

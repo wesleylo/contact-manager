@@ -1,48 +1,30 @@
-<?php
-include 'database.php';
-?>
+<?php include_once 'dbconfig.php';?>
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Contact Manager</title>
-    <!-- charset -->
-    <meta charset="utf-8">
+<html lang="en">
 
-    <!-- responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
 
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <body>
-    <div class="container">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
+  <title>Contact Manager</title>
 
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/index.php">Task App</a>
-          </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="/index.php">All Tasks</a></li>
-              <li><a href="/new.php">New Task</a></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
-      <div class="row">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 
-        <div class="col-md-6 col-md-offset-3">
+  <!-- Bootstrap Material Design -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-material-design.css">
+  <link rel="stylesheet" type="text/css" href="/css/ripples.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+
+</head>

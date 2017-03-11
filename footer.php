@@ -1,9 +1,20 @@
 
-      </div>
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/material.min.js"></script>
+  <script src="/js/ripples.min.js"></script>
 
-    </div>
+  <script>
+  $(document).ready(function(){
 
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  </body>
-</html>
+});
+<!-- Menu Toggle Script -->
+  $.material.init();
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+
+  </script>
+
+</body>
