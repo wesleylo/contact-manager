@@ -1,8 +1,7 @@
 <?php include 'header.php';?>
 
 <?php
-if(isset($_POST['create']))
-{
+if(isset($_POST['create'])) {
   $fname = $_POST['fname'];
   $lname = $_POST['lname'];
   $company = $_POST['company'];
@@ -15,13 +14,11 @@ if(isset($_POST['create']))
   $zip = $_POST['zip'];
   $notes = $_POST['notes'];
 
-  if($crud->create($fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes))
-  {
-    // header("Location: index.php?page=".$total_no_of_pages."");
+  if($crud->create($fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes)) {
+    // header("Location: index.php?page=".$total_no_of_pages.""); // Figure out how to go to page where entry is?
     header("Location: index.php?success");
   }
-  else
-  {
+  else {
     header("Location: index.php?failure");
   }
 }
@@ -33,7 +30,7 @@ if(isset($_POST['create']))
 </div>
 
 <div class="modal-body">
-  <form action="create.php" method="post" class="form-horizontal">
+  <form action="create.php" method="POST" class="form-horizontal"> <!-- Modal containing these contents will be opened in index.php, POST to create.php, and redirect to index.php. -->
     <fieldset>
       <div class="row">
         <div class="col-md-2">
@@ -46,7 +43,7 @@ if(isset($_POST['create']))
             <input type="text" class="form-control fname" name="fname" placeholder="First Name" required>
           </div>
         </div>
-        <div class="col-md-1"> <!--Offsets weren't working-->
+        <div class="col-md-1"> <!-- Offsets weren't working. -->
           <div class="form-group"></div>
         </div>
         <div class="col-md-4">
@@ -89,9 +86,9 @@ if(isset($_POST['create']))
         </div>
         <div class="col-md-9">
           <div class="form-group">
-    <input type="email" class="form-control" name="email" placeholder="Email" required>
-    <!--<p class="help-block">A valid email contains an @ character</p> not always informative-->
-  </div>
+            <input type="email" class="form-control" name="email" placeholder="Email" required>
+            <!-- <p class="help-block">A valid email contains an @ character</p> Remove? Not always informative. -->
+          </div>
         </div>
         <div class="col-md-1">
           <div class="form-group"></div>
@@ -235,7 +232,7 @@ if(isset($_POST['create']))
     </fieldset>
   </form>
 </div>
-<script> $.getScript("//code.jquery.com/jquery-1.10.2.min.js");</script> <!-- Fixes 'Synchronous XMLHttpRequest' warning -->
+<script> $.getScript("//code.jquery.com/jquery-1.10.2.min.js");</script> <!-- getScript() fixes 'Synchronous XMLHttpRequest' warning. Did not include Bootstrap to fix error with modal closing. -->
 <script> $.getScript("/js/material.min.js");</script>
 <script> $.getScript("/js/ripples.min.js");</script>
 <script>$.material.init();</script>

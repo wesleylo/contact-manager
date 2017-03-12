@@ -13,7 +13,7 @@ $("#menu-toggle").click(function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
 });
-$(".modal").on('shown.bs.modal', function () {
+$("#create-modal").on('shown.bs.modal', function () {
      $(this).find(".fname").focus().select();
  });
 </script>

@@ -56,7 +56,7 @@
           if(isset($_GET['success']))
           {
             ?>
-
+              <!-- Go to page containing new entry and highlight? -->
             <?php
           }
           else if(isset($_GET['failure']))
@@ -81,11 +81,20 @@
           </div>
         </div>
         <!-- End read contacts -->
-        <a data-toggle="modal" href="create.php" data-target="#modal">Create New Contact</a><br>
-        <a data-toggle="modal" href="create.php" data-target="#modal">Update/Edit Contact</a><br>
-        <a data-toggle="modal" href="create.php" data-target="#modal">Read Detailed Contact</a><br>
-        <a data-toggle="modal" href="create.php" data-target="#modal">Delete Contact</a>
-        <div class="modal fade text-center" id="modal">
+        <a data-toggle="modal" href="create.php" data-target="#create-modal">Create New Contact</a><br>
+        <a data-toggle="modal" href="edit.php" data-target="#edit-modal">Update/Edit Contact</a><br>
+        <a data-toggle="modal" href="read.php" data-target="#contact-card-modal">Read Detailed Contact Card</a><br>
+        <a data-toggle="modal" href="delete.php" data-target="#modal">Delete Contact</a> <!-- Do delete in class.crud.php -->
+
+
+        <div class="modal fade text-center" id="create-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade text-center" id="edit-modal"> 
           <div class="modal-dialog">
             <div class="modal-content">
             </div>
