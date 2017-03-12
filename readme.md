@@ -4,7 +4,7 @@ This web-based contact manager application was built using PHP and MySQL. Functi
 Installation:
 1. Clone Repo
 2. Use MAMP to start a server with Web & MySQL ports set to 80 & 3306
-3. ???
+3. Navigate to localhost with a web browser
 4. Profit
 
 Sources:
