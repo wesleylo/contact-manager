@@ -1,33 +1,4 @@
-<?php include_once 'dbconfig.php';?>
 <?php include_once 'header.php';?>
-<body>
-  <!--navbar-->
-  <div class="bs-component">
-    <div id="override" class="navbar navbar-inverse">
-      <div class="container-fluid">
-
-        <div class="navbar-collapse collapse navbar-inverse-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#menu-toggle" id="menu-toggle"><i class="material-icons">dehaze</i></a></li>
-            <li class="brand-padding"></li>
-          </ul>
-          <form class="navbar-form navbar-right">
-            <div class="form-group is-empty">
-              <input type="text" class="form-control col-md-8" placeholder="Search">
-            </div>
-          </form>
-          <ul class="nav navbar-nav navbar-left">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="index.php">Contact Manager</a>
-            </div>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-
-    <div id="wrapper" class="toggled">
-
       <!-- Sidebar -->
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
@@ -94,7 +65,7 @@
           </div>
         </div>
 
-        <div class="modal fade text-center" id="edit-modal"> 
+        <div class="modal fade text-center" id="edit-modal">
           <div class="modal-dialog">
             <div class="modal-content">
             </div>

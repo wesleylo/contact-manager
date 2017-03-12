@@ -1,5 +1,5 @@
 <?php
-include_once 'class.crud.php';
+require_once 'class.crud.php';
 
 error_reporting(E_ALL);
 
