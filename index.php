@@ -34,14 +34,14 @@
           <li class="sidebar-brand">
             Groups
           </li>
-          <li>
-            <a href="#" class="all-contacts"><i class="material-icons">contacts</i> <span class="group">All Contacts (100)</span></a>
+          <li class="all-contacts">
+            <a href="#"><i class="material-icons">contacts</i> <span class="group">All Contacts (100)</span></a>
           </li>
-          <li>
-            <a href="#" class="group"><i class="material-icons">group</i> <span class="group">Friends (20)</span></a>
+          <li class="group-div">
+            <a href="#"><i class="material-icons">group</i> <span class="group">Friends (20)</span></a>
           </li>
-          <li>
-            <a href="#" class="add-group"><i class="material-icons">group_add</i> <span class="group">Add New Group</span></a>
+          <li class="add-group">
+            <a href="#"><i class="material-icons">group_add</i> <span class="group">Add New Group</span></a>
           </li>
         </ul>
       </div>
@@ -53,7 +53,7 @@
           <div class="clearfix"></div>
 
           <?php
-          if(isset($_GET['inserted']))
+          if(isset($_GET['success']))
           {
             ?>
 
@@ -64,7 +64,7 @@
             ?>
             <div class="alert alert-dismissible alert-warning">
               <button type="button" class="close" data-dismiss="alert">×</button>
-              <strong>SORRY!</strong> ERROR while inserting record !
+              <strong>SORRY!</strong> ERROR while inserting record!
             </div>
             <?php
           }
@@ -81,36 +81,36 @@
           </div>
         </div>
         <!-- End read contacts -->
-<a data-toggle="modal" href="create.php" data-target="#modal">Create New Contact</a><br>
-<a data-toggle="modal" href="create.php" data-target="#modal">Update/Edit Contact</a><br>
-<a data-toggle="modal" href="create.php" data-target="#modal">Read Detailed Contact</a><br>
-<a data-toggle="modal" href="create.php" data-target="#modal">Delete Contact</a>
-<div class="modal fade text-center" id="modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+        <a data-toggle="modal" href="create.php" data-target="#modal">Create New Contact</a><br>
+        <a data-toggle="modal" href="create.php" data-target="#modal">Update/Edit Contact</a><br>
+        <a data-toggle="modal" href="create.php" data-target="#modal">Read Detailed Contact</a><br>
+        <a data-toggle="modal" href="create.php" data-target="#modal">Delete Contact</a>
+        <div class="modal fade text-center" id="modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <!-- /#page-content-wrapper -->
+
+
+
+
+
+
     </div>
-  </div>
-</div>
+    <!-- /#wrapper -->
 
-
-
-
-
-
-
-
-
-
-
-    </div>
-    <!-- /#page-content-wrapper -->
-
-
-
-
-
-
-  </div>
-  <!-- /#wrapper -->
-
-<?php include_once 'footer.php';?>
+    <?php include_once 'footer.php';?>
