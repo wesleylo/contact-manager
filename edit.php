@@ -1,6 +1,10 @@
+<?php require_once 'class.crud.php';?>
 <?php include_once 'header.php';?>
 
 <?php
+if(isset($_POST['edit'])) {
+
+}
 if(isset($_POST['create'])) {
   $fname = $_POST['fname'];
   $lname = $_POST['lname'];
@@ -26,11 +30,12 @@ if(isset($_POST['create'])) {
 
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-  <h4 class="modal-title">Create New Contact</h4>
+  <h4 class="modal-title">Edit Contact</h4>
 </div>
 
 <div class="modal-body">
-  <form action="edit.php" method="POST" class="form-horizontal"> <!-- Modal containing these contents will be opened in index.php, POST to edit.php, and redirect to index.php. -->
+  <!-- Modal containing these contents will be opened in index.php, POST to edit.php when submitted, and redirect to index.php if entry is successfully entered into DB. -->
+  <form action="edit.php" method="POST" class="form-horizontal">
     <fieldset>
       <div class="row">
         <div class="col-md-2">
@@ -40,10 +45,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <div class="left-inner-addon">
-       <i class="icon-user"></i>
-            <input type="text" class="form-control fname" name="fname" placeholder="First Name" required>
-          </div>
+            <input type="text" class="form-control fname" name="fname" placeholder="First Name" value="test" required>
           </div>
         </div>
         <div class="col-md-1"> <!-- Offsets weren't working. -->
@@ -235,7 +237,7 @@ if(isset($_POST['create'])) {
     </fieldset>
   </form>
 </div>
-<script> $.getScript("//code.jquery.com/jquery-1.10.2.min.js");</script> <!-- getScript() fixes 'Synchronous XMLHttpRequest' warning. Did not include Bootstrap to fix error with modal closing. -->
-<script> $.getScript("/js/material.min.js");</script>
-<script> $.getScript("/js/ripples.min.js");</script>
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>$.getScript("/js/material.min.js");</script> <!-- getScript() fixes 'Synchronous XMLHttpRequest' warning. Did not include Bootstrap to fix error with modal closing. -->
+<script>$.getScript("/js/ripples.min.js");</script>
 <script>$.material.init();</script>

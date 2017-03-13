@@ -36,7 +36,7 @@ class crud {
     }
   }
 
-  public function getID($id) {
+  public function getID($id) { //remove
     $stmt = $this->db->prepare("SELECT * FROM contacts WHERE id=:id");
     $stmt->execute(array(":id"=>$id));
     $editRow=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -90,7 +90,7 @@ class crud {
               Check if first alphabetically on create/update/destroy -->
               A
             </div>
-            <div data-toggle="modal" href="edit.php" data-target="#edit-modal" class="contact col-lg-11"> <!-- Read detailed contact card... Goes to edit for now -->
+            <div data-toggle="modal" href="edit.php" data-target="#edit-modal" class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
               <div class="col-lg-1">
                 <!-- Pic of contact that a user can upload will go here. -->
                 Pic
@@ -125,9 +125,11 @@ class crud {
   }
   else {
     ?>
-    <tr>
-      <td>Nothing here...</td>
-    </tr>
+    <div class="row">
+      <div class="col-lg-12">
+      <p>Nothing here...</p>
+    </div>
+    </div>
     <?php
   }
 }

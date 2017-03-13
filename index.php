@@ -71,14 +71,14 @@
           $query = "SELECT * FROM contacts";
           $records_per_page=10;
           $newquery = $crud->paging($query,$records_per_page);
-          $crud->dataview($newquery);
+          $crud->dataview($newquery); // Read and render contacts from DB.
           ?>
           <div class="pagination-wrap">
             <?php $crud->paginglink($query,$records_per_page); ?>
           </div>
         </div>
         <!-- End read contacts -->
-        <a data-toggle="modal" href="create.php" data-target="#create-modal">Create New Contact</a><br>
+        <a data-toggle="modal" href="create.php" data-target="#create-modal">Create New Contact</a><br> <!-- Renders create.php in modal without POST request. -->
         <a data-toggle="modal" href="edit.php" data-target="#edit-modal">Update/Edit Contact</a><br>
         <a data-toggle="modal" href="read.php" data-target="#contact-card-modal">Read Detailed Contact Card</a><br>
         <a data-toggle="modal" href="delete.php" data-target="#modal">Delete Contact</a> <!-- Do delete in class.crud.php -->

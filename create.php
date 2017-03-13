@@ -2,19 +2,7 @@
 
 <?php
 if(isset($_POST['create'])) {
-  $fname = $_POST['fname'];
-  $lname = $_POST['lname'];
-  $company = $_POST['company'];
-  $title = $_POST['title'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $address = $_POST['address'];
-  $city = $_POST['city'];
-  $state = $_POST['state'];
-  $zip = $_POST['zip'];
-  $notes = $_POST['notes'];
-
-  if($crud->create($fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes)) {
+  if($crud->create($_POST['fname'], $_POST['lname'], $_POST['company'], $_POST['title'], $_POST['email'], $_POST['phone'], $_POST['address'], $_POST['city'], $_POST['state'], $_POST['zip'], $_POST['notes'])) {
     // header("Location: index.php?page=".$total_no_of_pages.""); // Figure out how to go to page where entry is?
     header("Location: index.php?success");
   }
@@ -30,7 +18,8 @@ if(isset($_POST['create'])) {
 </div>
 
 <div class="modal-body">
-  <form action="create.php" method="POST" class="form-horizontal"> <!-- Modal containing these contents will be opened in index.php, POST to create.php, and redirect to index.php. -->
+  <!-- Modal containing these contents will be opened in index.php, POST to create.php when submitted, and redirect to index.php if entry is successfully entered into DB. -->
+  <form action="create.php" method="POST" class="form-horizontal">
     <fieldset>
       <div class="row">
         <div class="col-md-2">
@@ -40,7 +29,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <input type="text" class="form-control fname" name="fname" placeholder="First Name" required>
+            <input type="text" class="form-control fname" name="contact[fname]" placeholder="First Name" required>
           </div>
         </div>
         <div class="col-md-1"> <!-- Offsets weren't working. -->
@@ -87,7 +76,6 @@ if(isset($_POST['create'])) {
         <div class="col-md-9">
           <div class="form-group">
             <input type="email" class="form-control" name="email" placeholder="Email" required>
-            <!-- <p class="help-block">A valid email contains an @ character</p> Remove? Not always informative. -->
           </div>
         </div>
         <div class="col-md-1">
