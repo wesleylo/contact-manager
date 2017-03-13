@@ -1,6 +1,6 @@
 <?php include_once 'header.php';?>
 
-<?php // First create new entry, then, when that's working, edit existing entry
+<?php
 if(isset($_POST['create'])) {
   $fname = $_POST['fname'];
   $lname = $_POST['lname'];
@@ -30,7 +30,7 @@ if(isset($_POST['create'])) {
 </div>
 
 <div class="modal-body">
-  <form action="create.php" method="POST" class="form-horizontal"> <!-- Modal containing these contents will be opened in index.php, POST to create.php, and redirect to index.php. -->
+  <form action="edit.php" method="POST" class="form-horizontal"> <!-- Modal containing these contents will be opened in index.php, POST to edit.php, and redirect to index.php. -->
     <fieldset>
       <div class="row">
         <div class="col-md-2">
@@ -40,7 +40,10 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-4">
           <div class="form-group">
+            <div class="left-inner-addon">
+       <i class="icon-user"></i>
             <input type="text" class="form-control fname" name="fname" placeholder="First Name" required>
+          </div>
           </div>
         </div>
         <div class="col-md-1"> <!-- Offsets weren't working. -->
