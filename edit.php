@@ -249,6 +249,3 @@ if(isset($_POST['create'])) {
   </form>
 </div>
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script>$.getScript("/js/material.min.js");</script> <!-- getScript() fixes 'Synchronous XMLHttpRequest' warning. Did not include Bootstrap to fix error with modal closing. -->
-<script>$.getScript("/js/ripples.min.js");</script>
-<script>$.material.init();</script>

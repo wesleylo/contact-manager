@@ -15,7 +15,10 @@ $("#menu-toggle").click(function(e) {
 });
 $("#create-modal").on('shown.bs.modal', function () {
      $(this).find(".fname").focus().select();
- });
+});
+$("#edit-modal").on('shown.bs.modal', function () {
+     $(this).find(".fname").focus();
+});
 </script>
 
 </body>
