@@ -3,7 +3,7 @@
 <body>
   <!-- Navbar -->
   <div class="bs-component">
-    <div id="override" class="navbar navbar-inverse">
+    <div id="override" class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-collapse collapse navbar-inverse-collapse">
           <ul class="nav navbar-nav">
