@@ -7,7 +7,6 @@
 $(document).ready(function(){
 
 });
-<!-- Menu Toggle Script -->
 $.material.init();
 $("#menu-toggle").click(function(e) {
   e.preventDefault();
@@ -18,6 +17,9 @@ $("#create-modal").on('shown.bs.modal', function () {
 });
 $("#edit-modal").on('shown.bs.modal', function () {
      $(this).find(".fname").focus();
+});
+$("#edit-modal").on("hidden.bs.modal", function (e) {
+    $(this).removeData("bs.modal").find(".modal-content").empty();
 });
 </script>
 
