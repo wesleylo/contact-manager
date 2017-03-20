@@ -6,6 +6,12 @@ if (!ini_get('display_errors')) {
   ini_set('display_errors', 1);
 }
 
+function console_log( $data ){ // For debugging
+  echo '<script>';
+  echo 'console.log('. json_encode( $data ) .')';
+  echo '</script>';
+}
+
 class crud {
   private $db;
 
@@ -36,29 +42,31 @@ class crud {
     }
   }
 
-  public function getID($id) { //remove
+  public function getRowByID($id) {
     $stmt = $this->db->prepare("SELECT * FROM contacts WHERE id=:id");
     $stmt->execute(array(":id"=>$id));
     $editRow=$stmt->fetch(PDO::FETCH_ASSOC);
+    console_log($editRow);
     return $editRow;
   }
 
-  public function update($id, $fname, $lname, $email, $phone) {
+  public function update($id, $fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes) {
     try {
-      $stmt=$this->db->prepare("UPDATE contacts SET
-        first_name=:fname,
-        last_name=:lname,
-        email_id=:email,
-        phone=:phone
-        WHERE id=:id ");
-        $stmt->bindparam(":fname",$fname);
-        $stmt->bindparam(":lname",$lname);
-        $stmt->bindparam(":email",$email);
-        $stmt->bindparam(":phone",$phone);
-        $stmt->bindparam(":id",$id);
-        $stmt->execute();
-
-        return true;
+      $stmt = $this->db->prepare("UPDATE contacts SET fname=:fname, lname=:lname, company=:company, title=:title, email=:email, phone=:phone, address=:address, city=:city, state=:state, zip=:zip, notes=:notes WHERE id=:id ");
+      $stmt->bindparam(":id",$id);
+      $stmt->bindparam(":fname",$fname);
+      $stmt->bindparam(":lname",$lname);
+      $stmt->bindparam(":company",$company);
+      $stmt->bindparam(":title",$title);
+      $stmt->bindparam(":email",$email);
+      $stmt->bindparam(":phone",$phone);
+      $stmt->bindparam(":address",$address);
+      $stmt->bindparam(":city",$city);
+      $stmt->bindparam(":state",$state);
+      $stmt->bindparam(":zip",$zip);
+      $stmt->bindparam(":notes",$notes);
+      $stmt->execute();
+      return true;
       }
       catch(PDOException $e) {
         echo $e->getMessage();
@@ -74,15 +82,12 @@ class crud {
     }
 
     /* paging */
-    public function dataview($query) // Read: Renders DB entries to index.php.
-    {
+    public function dataview($query) { // Read: Renders DB entries to index.php.
       $stmt = $this->db->prepare($query);
       $stmt->execute();
 
-      if($stmt->rowCount()>0)
-      {
-        while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-        {
+      if($stmt->rowCount()>0) {
+        while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
           ?>
           <div class="row">
             <div class="col-lg-1 first-letter">
@@ -90,7 +95,7 @@ class crud {
               Check if first alphabetically on create/update/destroy -->
               A
             </div>
-            <div data-toggle="modal" href="edit.php" data-target="#edit-modal" class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
+            <div data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal" class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
               <div class="col-lg-1">
                 <!-- Pic of contact that a user can upload will go here. -->
                 Pic

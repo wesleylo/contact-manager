@@ -2,11 +2,14 @@
 <?php include_once 'header.php';?>
 
 <?php
-if(isset($_POST['edit'])) {
-
+if(isset($_GET['id'])) {
+  $edit_id = $_GET['id'];
+  extract($crud->getRowByID($edit_id));
+  echo "$edit_id, $id, $fname";
 }
-if(isset($_POST['create'])) {
-  $fname = $_POST['fname'];
+if(isset($_POST['update'])) {
+  // $id = $edit_id; already get id from extract
+  $fname = $_POST['fname']; // Overwrite variables extracted from getRowByID.
   $lname = $_POST['lname'];
   $company = $_POST['company'];
   $title = $_POST['title'];
@@ -17,7 +20,15 @@ if(isset($_POST['create'])) {
   $state = $_POST['state'];
   $zip = $_POST['zip'];
   $notes = $_POST['notes'];
-
+  if($crud->update($id, $fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes)) {
+    // header("Location: index.php?page=".$total_no_of_pages.""); // Figure out how to go to page where entry is?
+    header("Location: index.php?success");
+  }
+  else {
+    header("Location: index.php?failure");
+  }
+}
+if(isset($_POST['create'])) {
   if($crud->create($fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes)) {
     // header("Location: index.php?page=".$total_no_of_pages.""); // Figure out how to go to page where entry is?
     header("Location: index.php?success");
@@ -45,7 +56,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <input type="text" class="form-control fname" name="fname" placeholder="First Name" value="test" required>
+            <input type="text" class="form-control fname" name="fname" placeholder="First Name" value="<?php print($fname);?>" required>
           </div>
         </div>
         <div class="col-md-1"> <!-- Offsets weren't working. -->
@@ -53,7 +64,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
+            <input type="text" class="form-control" name="lname" placeholder="Last Name" value="<?php print($lname);?>" required>
           </div>
         </div>
         <div class="col-md-1">
@@ -68,7 +79,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <input type="text" class="form-control" name="company" placeholder="Company" required>
+            <input type="text" class="form-control" name="company" placeholder="Company" value="<?php print($company);?>" required>
           </div>
         </div>
         <div class="col-md-1">
@@ -76,7 +87,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <input type="text" class="form-control" name="title" placeholder="Title" required>
+            <input type="text" class="form-control" name="title" placeholder="Title" value="<?php print($title);?>" required>
           </div>
         </div>
         <div class="col-md-1">
@@ -91,7 +102,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-9">
           <div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="Email" required>
+            <input type="email" class="form-control" name="email" placeholder="Email" value="<?php print($email);?>" required>
             <!-- <p class="help-block">A valid email contains an @ character</p> Remove? Not always informative. -->
           </div>
         </div>
@@ -107,7 +118,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-9">
           <div class="form-group">
-            <input type="tel" class="form-control" name="phone" placeholder="Phone" pattern="^\d{3}-\d{3}-\d{4}$" required>
+            <input type="tel" class="form-control" name="phone" placeholder="Phone" value="<?php print($phone);?>" pattern="^\d{3}-\d{3}-\d{4}$" required>
             <p class="help-block">Format: XXX-XXX-XXXX</p>
           </div>
         </div>
@@ -123,7 +134,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-9">
           <div class="form-group">
-            <input type="text" class="form-control" name="address" placeholder="Address" required>
+            <input type="text" class="form-control" name="address" placeholder="Address" value="<?php print($address);?>" required>
           </div>
         </div>
         <div class="col-md-1">
@@ -135,7 +146,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-3">
           <div class="form-group">
-            <input type="text" class="form-control" name="city" placeholder="City" required>
+            <input type="text" class="form-control" name="city" placeholder="City" value="<?php print($city);?>" required>
           </div>
         </div>
         <div class="col-md-1">
@@ -144,7 +155,7 @@ if(isset($_POST['create'])) {
         <div class="col-md-1">
           <div class="form-group">
             <select id="inputState" class="form-control" name="state" required>
-              <option value="" hidden="true" disabled selected>State</option>
+              <option value="<?php print($state);?>" hidden="true" disabled selected><?php print($state);?></option>
               <option value="AL">AL</option>
               <option value="AK">AK</option>
               <option value="AZ">AZ</option>
@@ -204,7 +215,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-3">
           <div class="form-group">
-            <input type="text" class="form-control" name="zip" placeholder="Zip" required>
+            <input type="text" class="form-control" name="zip" placeholder="Zip" value="<?php print($zip);?>" required>
           </div>
         </div>
         <div class="col-md-1">
@@ -219,7 +230,7 @@ if(isset($_POST['create'])) {
         </div>
         <div class="col-md-9">
           <div class="form-group">
-            <textarea class="form-control" rows="1" name="notes" placeholder="Notes" required></textarea>
+            <textarea class="form-control" rows="1" name="notes" placeholder="Notes" value="<?php print($notes);?>" required><?php print($notes);?></textarea>
           </div>
         </div>
         <div class="col-md-1">
@@ -231,7 +242,7 @@ if(isset($_POST['create'])) {
       <div class="modal-footer form-group">
         <div class="col-md-7 col-md-offset-5">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button submit" name="create" class="btn btn-primary">Save</button>
+          <button type="button submit" name="update" class="btn btn-primary">Save</button>
         </div>
       </div>
     </fieldset>
