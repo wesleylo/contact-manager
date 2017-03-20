@@ -14,6 +14,7 @@ function console_log( $data ){ // For debugging
 
 class crud {
   private $db;
+  public $edit_id;
 
   function __construct($conn) {
     $this->db = $conn;
@@ -42,12 +43,26 @@ class crud {
     }
   }
 
+
+
   public function getRowByID($id) {
     $stmt = $this->db->prepare("SELECT * FROM contacts WHERE id=:id");
     $stmt->execute(array(":id"=>$id));
     $editRow=$stmt->fetch(PDO::FETCH_ASSOC);
     console_log($editRow);
     return $editRow;
+  }
+
+  public function setEditID($id) {
+    $this->edit_id = $id; // Set edit_id
+    console_log($this->edit_id);
+    return true;
+  }
+
+  public function getEditID() {
+    $edit_id = $this->edit_id;
+    console_log($this->edit_id);
+    return $edit_id;
   }
 
   public function update($id, $fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes) {
@@ -81,7 +96,6 @@ class crud {
       return true;
     }
 
-    /* paging */
     public function dataview($query) { // Read: Renders DB entries to index.php.
       $stmt = $this->db->prepare($query);
       $stmt->execute();

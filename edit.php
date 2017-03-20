@@ -1,14 +1,28 @@
-<?php require_once 'class.crud.php';?>
 <?php include_once 'header.php';?>
 
 <?php
-if(isset($_GET['id'])) {
+if(isset($_GET['id'])) { // Gets values for edit modal fields
   $edit_id = $_GET['id'];
+  $crud->setEditID($edit_id);
+  echo $edit_id;
   extract($crud->getRowByID($edit_id));
-  echo "$edit_id, $id, $fname";
 }
 if(isset($_POST['update'])) {
-  // $id = $edit_id; already get id from extract
+  $edit_id = $crud->getEditID();
+  //$edit_id = 43;
+  echo $edit_id;
+  echo $_POST['fname']; // Overwrite variables extracted from getRowByID.
+  echo $_POST['lname'];
+  echo $_POST['company'];
+  echo $_POST['title'];
+  echo $_POST['email'];
+  echo $_POST['phone'];
+  echo $_POST['address'];
+  echo $_POST['city'];
+  echo $_POST['state'];
+  echo $_POST['zip'];
+  echo $_POST['notes'];
+
   $fname = $_POST['fname']; // Overwrite variables extracted from getRowByID.
   $lname = $_POST['lname'];
   $company = $_POST['company'];
@@ -20,16 +34,17 @@ if(isset($_POST['update'])) {
   $state = $_POST['state'];
   $zip = $_POST['zip'];
   $notes = $_POST['notes'];
-  if($crud->update($id, $fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes)) {
+  if(true){//$crud->update($edit_id, $fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes)) {
     // header("Location: index.php?page=".$total_no_of_pages.""); // Figure out how to go to page where entry is?
-    header("Location: index.php?success");
+    //header("Location: index.php?success");
   }
   else {
     header("Location: index.php?failure");
   }
 }
 if(isset($_POST['create'])) {
-  if($crud->create($fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes)) {
+  // Took out variable definitions because they're not used anywhere here.
+  if($crud->create($_POST['fname'], $_POST['lname'], $_POST['company'], $_POST['title'], $_POST['email'], $_POST['phone'], $_POST['address'], $_POST['city'], $_POST['state'], $_POST['zip'], $_POST['notes'])) {
     // header("Location: index.php?page=".$total_no_of_pages.""); // Figure out how to go to page where entry is?
     header("Location: index.php?success");
   }
@@ -155,7 +170,7 @@ if(isset($_POST['create'])) {
         <div class="col-md-1">
           <div class="form-group">
             <select id="inputState" class="form-control" name="state" required>
-              <option value="<?php print($state);?>" hidden="true" disabled selected><?php print($state);?></option>
+              <option value="<?php print($state);?>" hidden="true" selected><?php print($state);?></option>
               <option value="AL">AL</option>
               <option value="AK">AK</option>
               <option value="AZ">AZ</option>
