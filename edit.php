@@ -4,39 +4,14 @@
 if(isset($_GET['id'])) { // Gets values for edit modal fields
   $edit_id = $_GET['id'];
   $crud->setEditID($edit_id);
-  echo $edit_id;
   extract($crud->getRowByID($edit_id));
 }
 if(isset($_POST['update'])) {
   extract($crud->getEditID());
-  //$edit_id = 43;
-  echo $edit_id;
-  echo $_POST['fname']; // Overwrite variables extracted from getRowByID.
-  echo $_POST['lname'];
-  echo $_POST['company'];
-  echo $_POST['title'];
-  echo $_POST['email'];
-  echo $_POST['phone'];
-  echo $_POST['address'];
-  echo $_POST['city'];
-  echo $_POST['state'];
-  echo $_POST['zip'];
-  echo $_POST['notes'];
 
-  $fname = $_POST['fname']; // Overwrite variables extracted from getRowByID.
-  $lname = $_POST['lname'];
-  $company = $_POST['company'];
-  $title = $_POST['title'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $address = $_POST['address'];
-  $city = $_POST['city'];
-  $state = $_POST['state'];
-  $zip = $_POST['zip'];
-  $notes = $_POST['notes'];
-  if(true){//$crud->update($edit_id, $fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes)) {
+  if($crud->update($edit_id, $_POST['fname'], $_POST['lname'], $_POST['company'], $_POST['title'], $_POST['email'], $_POST['phone'], $_POST['address'], $_POST['city'], $_POST['state'], $_POST['zip'], $_POST['notes'])) {
     // header("Location: index.php?page=".$total_no_of_pages.""); // Figure out how to go to page where entry is?
-    //header("Location: index.php?success");
+    header("Location: index.php?success");
   }
   else {
     header("Location: index.php?failure");

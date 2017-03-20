@@ -42,13 +42,10 @@ class crud {
     }
   }
 
-
-
   public function getRowByID($id) {
       $stmt = $this->db->prepare("SELECT * FROM contacts WHERE id=:id");
       $stmt->execute(array(":id"=>$id));
       $editRow=$stmt->fetch(PDO::FETCH_ASSOC);
-      console_log($editRow); // Removemelater
       return $editRow;
   }
 
@@ -57,7 +54,6 @@ class crud {
       $stmt = $this->db->prepare("UPDATE edit_id SET edit_id=:edit_id");
       $stmt->bindparam(":edit_id",$edit_id);
       $stmt->execute();
-      console_log($edit_id); // Removemelater
       return true;
     }
     catch(PDOException $e) {
@@ -70,7 +66,6 @@ public function getEditID() {
     $stmt = $this->db->prepare("SELECT edit_id FROM edit_id");
     $stmt->execute();
     $edit_id_row=$stmt->fetch(PDO::FETCH_ASSOC);
-    console_log($edit_id_row); // Removemelater
     return $edit_id_row;
 }
 
@@ -118,7 +113,8 @@ public function dataview($query) { // Read: Renders DB entries to index.php.
           Check if first alphabetically on create/update/destroy -->
           A
         </div>
-        <div data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal" class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
+        <!--<div data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal" class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
+        <div class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
           <div class="col-lg-1">
             <!-- Pic of contact that a user can upload will go here. -->
             Pic
@@ -133,7 +129,8 @@ public function dataview($query) { // Read: Renders DB entries to index.php.
             <?php print($row['phone']); ?>
           </div>
           <div class="col-lg-1">
-            Offset
+            <a data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal"><i class="material-icons">mode_edit</i></a>
+            <a data-toggle="modal" href="delete.php?id=<?php print($row['id']);?>" data-target="#delete-modal"><i class="material-icons">delete</i></i></a>
           </div>
         </div>
         <!-- <td><?php print($row['id']); ?></td>
