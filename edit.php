@@ -8,7 +8,7 @@ if(isset($_GET['id'])) { // Gets values for edit modal fields
   extract($crud->getRowByID($edit_id));
 }
 if(isset($_POST['update'])) {
-  $edit_id = $crud->getEditID();
+  extract($crud->getEditID());
   //$edit_id = 43;
   echo $edit_id;
   echo $_POST['fname']; // Overwrite variables extracted from getRowByID.

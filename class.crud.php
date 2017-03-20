@@ -14,7 +14,6 @@ function console_log( $data ){ // For debugging
 
 class crud {
   private $db;
-  public $edit_id;
 
   function __construct($conn) {
     $this->db = $conn;
@@ -46,111 +45,121 @@ class crud {
 
 
   public function getRowByID($id) {
-    $stmt = $this->db->prepare("SELECT * FROM contacts WHERE id=:id");
-    $stmt->execute(array(":id"=>$id));
-    $editRow=$stmt->fetch(PDO::FETCH_ASSOC);
-    console_log($editRow);
-    return $editRow;
+      $stmt = $this->db->prepare("SELECT * FROM contacts WHERE id=:id");
+      $stmt->execute(array(":id"=>$id));
+      $editRow=$stmt->fetch(PDO::FETCH_ASSOC);
+      console_log($editRow); // Removemelater
+      return $editRow;
   }
 
-  public function setEditID($id) {
-    $this->edit_id = $id; // Set edit_id
-    console_log($this->edit_id);
+  public function setEditID($edit_id) { // Save in DB. Had problems with saved global variable being destroyed on navigation to new page.
+    try {
+      $stmt = $this->db->prepare("UPDATE edit_id SET edit_id=:edit_id");
+      $stmt->bindparam(":edit_id",$edit_id);
+      $stmt->execute();
+      console_log($edit_id); // Removemelater
+      return true;
+    }
+    catch(PDOException $e) {
+      echo $e->getMessage();
+      return false;
+    }
+  }
+
+public function getEditID() {
+    $stmt = $this->db->prepare("SELECT edit_id FROM edit_id");
+    $stmt->execute();
+    $edit_id_row=$stmt->fetch(PDO::FETCH_ASSOC);
+    console_log($edit_id_row); // Removemelater
+    return $edit_id_row;
+}
+
+public function update($id, $fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes) {
+  try {
+    $stmt = $this->db->prepare("UPDATE contacts SET fname=:fname, lname=:lname, company=:company, title=:title, email=:email, phone=:phone, address=:address, city=:city, state=:state, zip=:zip, notes=:notes WHERE id=:id ");
+    $stmt->bindparam(":id",$id);
+    $stmt->bindparam(":fname",$fname);
+    $stmt->bindparam(":lname",$lname);
+    $stmt->bindparam(":company",$company);
+    $stmt->bindparam(":title",$title);
+    $stmt->bindparam(":email",$email);
+    $stmt->bindparam(":phone",$phone);
+    $stmt->bindparam(":address",$address);
+    $stmt->bindparam(":city",$city);
+    $stmt->bindparam(":state",$state);
+    $stmt->bindparam(":zip",$zip);
+    $stmt->bindparam(":notes",$notes);
+    $stmt->execute();
     return true;
   }
-
-  public function getEditID() {
-    $edit_id = $this->edit_id;
-    console_log($this->edit_id);
-    return $edit_id;
+  catch(PDOException $e) {
+    echo $e->getMessage();
+    return false;
   }
+}
 
-  public function update($id, $fname, $lname, $company, $title, $email, $phone, $address, $city, $state, $zip, $notes) {
-    try {
-      $stmt = $this->db->prepare("UPDATE contacts SET fname=:fname, lname=:lname, company=:company, title=:title, email=:email, phone=:phone, address=:address, city=:city, state=:state, zip=:zip, notes=:notes WHERE id=:id ");
-      $stmt->bindparam(":id",$id);
-      $stmt->bindparam(":fname",$fname);
-      $stmt->bindparam(":lname",$lname);
-      $stmt->bindparam(":company",$company);
-      $stmt->bindparam(":title",$title);
-      $stmt->bindparam(":email",$email);
-      $stmt->bindparam(":phone",$phone);
-      $stmt->bindparam(":address",$address);
-      $stmt->bindparam(":city",$city);
-      $stmt->bindparam(":state",$state);
-      $stmt->bindparam(":zip",$zip);
-      $stmt->bindparam(":notes",$notes);
-      $stmt->execute();
-      return true;
-      }
-      catch(PDOException $e) {
-        echo $e->getMessage();
-        return false;
-      }
-    }
+public function delete($id) {
+  $stmt = $this->db->prepare("DELETE FROM contacts WHERE id=:id");
+  $stmt->bindparam(":id",$id);
+  $stmt->execute();
+  return true;
+}
 
-    public function delete($id) {
-      $stmt = $this->db->prepare("DELETE FROM contacts WHERE id=:id");
-      $stmt->bindparam(":id",$id);
-      $stmt->execute();
-      return true;
-    }
+public function dataview($query) { // Read: Renders DB entries to index.php.
+  $stmt = $this->db->prepare($query);
+  $stmt->execute();
 
-    public function dataview($query) { // Read: Renders DB entries to index.php.
-      $stmt = $this->db->prepare($query);
-      $stmt->execute();
-
-      if($stmt->rowCount()>0) {
-        while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
-          ?>
-          <div class="row">
-            <div class="col-lg-1 first-letter">
-              <!-- Will print letter if entry is first alphabetically for its letter.
-              Check if first alphabetically on create/update/destroy -->
-              A
-            </div>
-            <div data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal" class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
-              <div class="col-lg-1">
-                <!-- Pic of contact that a user can upload will go here. -->
-                Pic
-              </div>
-              <div class="col-lg-3">
-                <?php print($row['fname'] . " " . $row['lname']);?>
-              </div>
-              <div class="col-lg-3">
-                <?php print($row['email']); ?>
-              </div>
-              <div class="col-lg-3">
-                <?php print($row['phone']); ?>
-              </div>
-              <div class="col-lg-1">
-                Offset
-              </div>
-            </div>
-            <!-- <td><?php print($row['id']); ?></td>
-            <td><?php print($row['fname']); ?></td>
-            <td><?php print($row['lname']); ?></td>
-            <td><?php print($row['email']); ?></td>
-            <td><?php print($row['phone']); ?></td>
-            <td align="center">
-            <a href="edit-data.php?edit_id=<?php print($row['id']); ?>"><i class="glyphicon glyphicon-edit"></i></a>
-          </td>
-          <td align="center">
-          <a href="delete.php?delete_id=<?php print($row['id']); ?>"><i class="glyphicon glyphicon-remove-circle"></i></a>
-        </td> -->
-      </div>
-      <?php
-    }
-  }
-  else {
-    ?>
-    <div class="row">
-      <div class="col-lg-12">
+  if($stmt->rowCount()>0) {
+    while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
+      ?>
+      <div class="row">
+        <div class="col-lg-1 first-letter">
+          <!-- Will print letter if entry is first alphabetically for its letter.
+          Check if first alphabetically on create/update/destroy -->
+          A
+        </div>
+        <div data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal" class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
+          <div class="col-lg-1">
+            <!-- Pic of contact that a user can upload will go here. -->
+            Pic
+          </div>
+          <div class="col-lg-3">
+            <?php print($row['fname'] . " " . $row['lname']);?>
+          </div>
+          <div class="col-lg-3">
+            <?php print($row['email']); ?>
+          </div>
+          <div class="col-lg-3">
+            <?php print($row['phone']); ?>
+          </div>
+          <div class="col-lg-1">
+            Offset
+          </div>
+        </div>
+        <!-- <td><?php print($row['id']); ?></td>
+        <td><?php print($row['fname']); ?></td>
+        <td><?php print($row['lname']); ?></td>
+        <td><?php print($row['email']); ?></td>
+        <td><?php print($row['phone']); ?></td>
+        <td align="center">
+        <a href="edit-data.php?edit_id=<?php print($row['id']); ?>"><i class="glyphicon glyphicon-edit"></i></a>
+      </td>
+      <td align="center">
+      <a href="delete.php?delete_id=<?php print($row['id']); ?>"><i class="glyphicon glyphicon-remove-circle"></i></a>
+    </td> -->
+  </div>
+  <?php
+}
+}
+else {
+  ?>
+  <div class="row">
+    <div class="col-lg-12">
       <p>Nothing here...</p>
     </div>
-    </div>
-    <?php
-  }
+  </div>
+  <?php
+}
 }
 
 public function paging($query, $records_per_page) {
