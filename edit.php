@@ -83,7 +83,6 @@ if(isset($_POST['update'])) {
         <div class="col-md-9">
           <div class="form-group">
             <input type="email" class="form-control" name="email" placeholder="Email" value="<?php print($email);?>" required>
-            <!-- <p class="help-block">A valid email contains an @ character</p> Remove? Not always informative. -->
           </div>
         </div>
         <div class="col-md-1">

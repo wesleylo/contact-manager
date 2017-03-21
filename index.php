@@ -101,7 +101,6 @@
         </div>
         <!-- End read contacts -->
 
-
         <div class="modal fade text-center" id="create-modal">
           <div class="modal-dialog">
             <div class="modal-content">

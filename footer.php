@@ -2,27 +2,13 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/material.min.js"></script>
 <script src="/js/ripples.min.js"></script>
+<script src="/js/modal.js"></script>
 
 <script>
-$(document).ready(function(){
-
-});
 $.material.init();
 $("#menu-toggle").click(function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
-});
-$("#create-modal").on('shown.bs.modal', function () {
-     $(this).find(".fname").focus().select();
-});
-$("#create-modal").on("hidden.bs.modal", function (e) {
-    $(this).removeData("bs.modal").find(".modal-content").empty();
-});
-$("#edit-modal").on('shown.bs.modal', function () {
-     $(this).find(".fname").focus();
-});
-$("#edit-modal").on("hidden.bs.modal", function (e) {
-    $(this).removeData("bs.modal").find(".modal-content").empty();
 });
 </script>
 

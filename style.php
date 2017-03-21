@@ -122,8 +122,6 @@
             </div>
           </div>
 
-
-
           <div class="col-md-12 section">
             <span class="anchor" id="buttons"></span>
             <h3>Buttons</h3>
@@ -131,7 +129,6 @@
             <a href="javascript:void(0)" class="btn btn-raised">Medium button</a>
             <a href="javascript:void(0)" class="btn btn-raised btn-sm">Small button</a>
           </div>
-
 
           <div class="col-md-12 section">
             <span class="anchor" id="forms"></span>
@@ -143,12 +140,10 @@
                     <legend>Legend</legend>
                     <div class="form-group">
                       <label for="inputEmail" class="col-md-2 control-label">Email</label>
-
                       <div class="col-md-10">
                         <input type="email" class="form-control" id="inputEmail" placeholder="Email">
                       </div>
                     </div>
-
                     <div class="form-group">
                       <div class="col-md-offset-2 col-md-10">
                         <div class="togglebutton">
@@ -160,15 +155,12 @@
                     </div>
                     <div class="form-group">
                       <label for="textArea" class="col-md-2 control-label">Textbox</label>
-
                       <div class="col-md-10">
                         <textarea class="form-control" rows="1" id="textArea"></textarea>
                       </div>
                     </div>
-
                     <div class="form-group">
                       <label for="select111" class="col-md-2 control-label">Select</label>
-
                       <div class="col-md-10">
                         <select id="select111" class="form-control">
                           <option>1</option>
@@ -179,7 +171,6 @@
                         </select>
                       </div>
                     </div>
-
                     <div class="form-group">
                       <div class="col-md-10 col-md-offset-2">
                         <button type="button" class="btn btn-default">Cancel</button>
@@ -193,13 +184,6 @@
           </div>
         </div>
         <!-- /#page-content-wrapper -->
-
-
-
-
-
-
       </div>
       <!-- /#wrapper -->
-
       <?php include_once 'footer.php';?>

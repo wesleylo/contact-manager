@@ -23,17 +23,17 @@ if(isset($_POST['delete'])) {
 </div>
 
 <div class="modal-body">
-  <!-- Modal containing these contents will be opened in index.php, POST to edit.php when submitted, and redirect to index.php if entry is successfully entered into DB. -->
+  <!-- Modal containing these contents will be opened in index.php, POST to delete.php when submitted, and redirect to index.php if entry is successfully deleted from DB. -->
   <form action="delete.php" method="POST" class="form-horizontal">
     <fieldset>
       This cannot be undone.
-        <div class="modal-footer form-group">
-          <div class="col-md-7 col-md-offset-5">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="button submit" name="delete" class="btn btn-primary">Delete</button>
-          </div>
+      <div class="modal-footer form-group">
+        <div class="col-md-7 col-md-offset-5">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button submit" name="delete" class="btn btn-primary">Delete</button>
         </div>
-      </fieldset>
-    </form>
-  </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
 </div>
