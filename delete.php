@@ -7,8 +7,7 @@ if(isset($_GET['id'])) { // Gets and stores id of row to delete
 }
 if(isset($_POST['delete'])) {
   extract($crud->getEditID());
-
-  if($crud->delete($edit_id) {
+  if($crud->delete($edit_id)) {
     // header("Location: index.php?page=".$total_no_of_pages.""); // Figure out how to go to page where entry is?
     header("Location: index.php?success");
   }
@@ -27,17 +26,7 @@ if(isset($_POST['delete'])) {
   <!-- Modal containing these contents will be opened in index.php, POST to edit.php when submitted, and redirect to index.php if entry is successfully entered into DB. -->
   <form action="delete.php" method="POST" class="form-horizontal">
     <fieldset>
-      <div class="row">
-        <div class="col-md-2">
-          <div class="form-group">
-            <i class="material-icons">face</i>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <input type="text" class="form-control fname" name="fname" placeholder="First Name" value="<?php print($fname);?>" required>
-          </div>
-        </div>
+      This cannot be undone.
         <div class="modal-footer form-group">
           <div class="col-md-7 col-md-offset-5">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
