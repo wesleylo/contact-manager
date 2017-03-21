@@ -29,9 +29,21 @@ body {
 #entries {
     margin-top: -15px;
 }
+#entries:hover {
+    cursor: pointer;
+}
+.form-group > i {
+    cursor: default;
+}
+.form-group > select {
+    cursor: pointer;
+}
 .menu-container {
     padding-bottom: 30px;
     min-height: 50px;
+}
+.modal-title:hover {
+    cursor: default;
 }
 #page-content-wrapper > .container-fluid {
     padding-right: 20px;
