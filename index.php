@@ -65,7 +65,7 @@
           }
           ?>
           <!-- Read contacts from DB here -->
-          <div class="row menu">
+          <div class="row menu-container">
             <div class="col-md-1">
               <div class="form-group">
                 <h5>Show</h5>
@@ -73,7 +73,7 @@
             </div>
             <div class="col-md-1">
               <div class="form-group">
-                <select id="s1" class="form-control">
+                <select id="entries" class="form-control">
                   <option value="10">10</option>
                   <option value="15">15</option>
                   <option value="25">25</option>
@@ -85,9 +85,9 @@
                 <h5>entires</h5>
               </div>
             </div>
-<div class="col-md-9">
-            <a data-toggle="modal" href="create.php" data-target="#create-modal" class="btn btn-raised btn-create">New Contact</a>
-          </div>
+            <div class="col-md-9">
+              <a data-toggle="modal" href="create.php" data-target="#create-modal" class="btn btn-raised btn-create">New Contact</a>
+            </div>
           </div>
           <?php
           $query = "SELECT * FROM contacts";
@@ -123,25 +123,16 @@
           </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
       </div>
       <!-- /#page-content-wrapper -->
 
-
-
-
-
-
     </div>
     <!-- /#wrapper -->
+    <footer class="footer navbar-fixed-bottom">
+      <div class="container-fluid">
+        <p class="text-muted"><a href="style.php">Style guide</a></p>
+        <p class="text-muted">Copyright © 2017 <a href="//github.com/wesleylo/contact-manager">Wesley Lo</a></p>
+      </div>
+    </footer>
 
     <?php include_once 'footer.php';?>

@@ -113,10 +113,9 @@ public function dataview($query) { // Read: Renders DB entries to index.php.
           Check if first alphabetically on create/update/destroy -->
           A
         </div>
-        <!--<div data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal" class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
-        <div class="contact contact-container" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
+        <div class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Will read detailed contact card on click -->
 
-          <div class="col-lg-3 name">
+          <div class="col-lg-4 name">
             <?php print($row['fname'] . " " . $row['lname']);?>
           </div>
           <div class="col-lg-4 email">

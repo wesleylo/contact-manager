@@ -46,32 +46,51 @@
       <!-- Page Content -->
       <div id="page-content-wrapper">
         <div class="container-fluid">
+          <span class="anchor" id="intro"></span>
           <h1>Styles</h1>
 
-          <div class="col-md-12">
-            <h3 id="intro">Intro</h3>
+          <div class="col-md-12 section">
+
+            <h3>Intro</h3>
             <p>We will encorporate flat design and use san-serif fonts. The design of the application should be non-distracting and should induce productivity.</p>
           </div>
 
-          <div class="col-md-12">
-            <h3 id="colors">Colors</h3>
+          <div class="col-md-12 section">
+            <span class="anchor" id="colors"></span>
+            <h3>Colors</h3>
+            <p style="color: #2a56c6;">#2a56c6</p>
+            <p style="color: #009688;">#009688</p>
+            <p style="color: #ff1700;">#ff1700</p>
           </div>
 
           <div class="col-md-12">
-            <h3 id="typography">Typography</h3>
-            <div class="well bs-component">
-              <h2>Product Sans</h2>
-              <p>Logo font; weight xxx</p>
+            <span class="anchor" id="typography"></span>
+            <h3>Typography</h3>
+            <div class="well bs-component col-md-12">
+              <div class="col-md-6">
+                <h2 style="font-family: 'Product Sans',Arial,sans-serif; font-size: 32px;font-weight:300">Product Sans</h2>
+                <p>Logo font; weight 300</p>
 
-              <h2>Fontname</h2>
-              <p>Header font; weight xxx</p>
+                <h2 style="font-weight:300;">Roboto</h2>
+                <p>Header font; weight 300</p>
 
-              <h2>Roboto</h2>
-              <p>Body font; weight xxx</p>
+                <h2 style="font-weight:400;">Roboto</h2>
+                <p>Header font; weight 400</p>
+              </div>
+              <div class="col-md-6">
+                <h2 style="font-weight:800;">Roboto</h2>
+                <p>Header font; weight 800</p>
+
+                <h2 style="font-weight:100;">Roboto</h2>
+                <p>Body font; weight 100</p>
+
+                <h2 style="font-weight:200;">Roboto</h2>
+                <p>Body font; weight 200</p>
+              </div>
             </div>
           </div>
 
-          <div class="col-md-12">
+          <div class="col-md-12 section">
             <p>Examples:</p>
             <h1>h1. VERY LARGE HEADER</h1>
             <h2>h2. Large header</h2>
@@ -80,39 +99,43 @@
             <h5>h5. Small header</h5>
             <p>p. Paragraph text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada, leo vitae vehicula consequat, felis erat tempor orci, at scelerisque tortor velit finibus leo. Sed blandit eros auctor lobortis pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dapibus pharetra lectus. Aliquam ultricies tortor ut ligula pharetra vulputate. Morbi porttitor magna et risus fermentum, et tempus tortor maximus. Pellentesque viverra dictum sapien non feugiat.</p>
             <p class="lead">p.lead. Lead paragrah text</p>
-            <p class="light">p.light. Light paragraph text</p>
-          </div>
-          <div class="col-md-6">
-            <h3>ul. Unordered List:</h3>
-            <ul>
-              <li>li. Item</li>
-              <li>li. Item</li>
-              <li>li. Item</li>
-              <li>li. Item</li>
-            </ul>
+            <p class="text-muted">p.light. Light paragraph text</p>
+
+            <div class="col-md-6">
+              <h3>ul. Unordered List:</h3>
+              <ul>
+                <li>li. Item</li>
+                <li>li. Item</li>
+                <li>li. Item</li>
+                <li>li. Item</li>
+              </ul>
+            </div>
+
+            <div class="col-md-6">
+              <h3>ol. Ordered List:</h3>
+              <ol>
+                <li>li. First item</li>
+                <li>li. Second item</li>
+                <li>li. Third item</li>
+                <li>li. Fourth item</li>
+              </ol>
+            </div>
           </div>
 
-          <div class="col-md-6">
-            <h3>ol. Ordered List:</h3>
-            <ol>
-              <li>li. First item</li>
-              <li>li. Second item</li>
-              <li>li. Third item</li>
-              <li>li. Fourth item</li>
-            </ol>
-          </div>
 
 
-          <div class="col-md-12">
-            <h3 id="buttons">Buttons</h3>
+          <div class="col-md-12 section">
+            <span class="anchor" id="buttons"></span>
+            <h3>Buttons</h3>
             <a href="javascript:void(0)" class="btn btn-raised btn-lg">Large button</a>
             <a href="javascript:void(0)" class="btn btn-raised">Medium button</a>
             <a href="javascript:void(0)" class="btn btn-raised btn-sm">Small button</a>
           </div>
 
 
-          <div class="col-md-12">
-            <h3 id="forms">Forms</h3>
+          <div class="col-md-12 section">
+            <span class="anchor" id="forms"></span>
+            <h3>Forms</h3>
             <div class="col-md-6">
               <div class="well bs-component">
                 <form class="form-horizontal">
