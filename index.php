@@ -128,7 +128,7 @@
     </div>
     <!-- /#wrapper -->
     <footer class="footer navbar-fixed-bottom">
-      <div class="container-fluid">
+      <div class="container-fluid footer-container">
         <p class="text-muted"><a href="style.php">Style guide</a></p>
         <p class="text-muted">Copyright © 2017 <a href="//github.com/wesleylo/contact-manager">Wesley Lo</a></p>
       </div>
