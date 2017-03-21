@@ -66,12 +66,12 @@
           ?>
           <!-- Read contacts from DB here -->
           <div class="row menu-container">
-            <div class="col-md-1">
+            <div class="col-md-1 col-sm-1 entries-per">
               <div class="form-group">
                 <h5>Show</h5>
               </div>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-1 col-sm-1 entries-per">
               <div class="form-group">
                 <select id="entries" class="form-control">
                   <option value="10">10</option>
@@ -80,12 +80,12 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-1 col-sm-1 entries-per">
               <div class="form-group">
-                <h5>entires</h5>
+                <h5>entries</h5>
               </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 col-sm-9 btn-create-container">
               <a data-toggle="modal" href="create.php" data-target="#create-modal" class="btn btn-raised btn-create">New Contact</a>
             </div>
           </div>

@@ -114,25 +114,24 @@ class crud {
       while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
         ?>
         <div class="row">
-          <div class="col-lg-1 first-letter">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 col-xxs-0 first-letter">
             <!-- Will print letter if entry is first alphabetically for its letter.
             Check if first alphabetically on create/update/destroy -->
             A
           </div>
-          <div class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Will read detailed contact card on click -->
-
-            <div class="col-lg-4 name">
+          <div class="contact col-lg-11 col-md-11 col-sm-11 col-xs-11 col-xxs-12" id="<?php print($row['id']);?>"> <!-- Will read detailed contact card on click -->
+            <div class="col-lg-4 col-md-3 col-sm-4 col-xs-8 name">
               <?php print($row['fname'] . " " . $row['lname']);?>
             </div>
-            <div class="col-lg-4 email">
+            <div class="col-lg-4 col-md-4 col-sm-0 col-xs-0 email">
               <?php print($row['email']); ?>
             </div>
-            <div class="col-lg-2 phone">
+            <div class="col-lg-2 col-md-3 col-sm-0 col-xs-0 phone">
               <?php print($row['phone']); ?>
             </div>
-            <div class="col-lg-2 tools">
-              <a data-toggle="modal" href="delete.php?id=<?php print($row['id']);?>" data-target="#delete-modal"><i class="material-icons">delete</i></i></a>
-              <a data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal"><i class="material-icons">mode_edit</i></a>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 tools">
+              <a data-toggle="modal" href="delete.php?id=<?php print($row['id']);?>" data-target="#delete-modal"><i class="material-icons delete-tool">delete</i></i></a>
+              <a data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal"><i class="material-icons edit-tool">mode_edit</i></a>
             </div>
           </div>
         </div>
