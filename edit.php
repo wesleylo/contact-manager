@@ -17,16 +17,6 @@ if(isset($_POST['update'])) {
     header("Location: index.php?failure");
   }
 }
-if(isset($_POST['create'])) {
-  // Took out variable definitions because they're not used anywhere here.
-  if($crud->create($_POST['fname'], $_POST['lname'], $_POST['company'], $_POST['title'], $_POST['email'], $_POST['phone'], $_POST['address'], $_POST['city'], $_POST['state'], $_POST['zip'], $_POST['notes'])) {
-    // header("Location: index.php?page=".$total_no_of_pages.""); // Figure out how to go to page where entry is?
-    header("Location: index.php?success");
-  }
-  else {
-    header("Location: index.php?failure");
-  }
-}
 ?>
 
 <div class="modal-header">

@@ -23,23 +23,21 @@
       <!-- Sidebar -->
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-          <li class="all-contacts">
-            <a href="#"><span class="group">Intro</span></a>
+          <li class="sidebar-brand">Styles</li>
+          <li class="sections">
+            <a href="#intro"><span class="section">Intro</span></a>
           </li>
-          <li class="">
-            <a href="#"><span class="group">Colors</span></a>
+          <li class="sections">
+            <a href="#colors"><span class="section">Colors</span></a>
           </li>
-          <li class="">
-            <a href="#"><span class="group">Typography</span></a>
+          <li class="sections">
+            <a href="#typography"><span class="section">Typography</span></a>
           </li>
-          <li class="">
-            <a href="#"><span class="group">Buttons</span></a>
+          <li class="sections">
+            <a href="#buttons"><span class="section">Buttons</span></a>
           </li>
-          <li class="">
-            <a href="#"><span class="group">Forms</span></a>
-          </li>
-          <li class="">
-            <a href="#"><span class="group">Icons</span></a>
+          <li class="sections">
+            <a href="#forms"><span class="section">Forms</span></a>
           </li>
         </ul>
       </div>
@@ -48,7 +46,7 @@
       <!-- Page Content -->
       <div id="page-content-wrapper">
         <div class="container-fluid">
-          <h1>Style Guide</h1>
+          <h1>Styles</h1>
 
           <div class="col-md-12">
             <h3 id="intro">Intro</h3>

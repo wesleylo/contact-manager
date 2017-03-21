@@ -49,7 +49,7 @@ class crud {
       return $editRow;
   }
 
-  public function setEditID($edit_id) { // Save in DB. Had problems with saved global variable being destroyed on navigation to new page.
+  public function setEditID($edit_id) { // Save id of row to edit in DB. Had problems with saved global variable being destroyed on navigation to new page.
     try {
       $stmt = $this->db->prepare("UPDATE edit_id SET edit_id=:edit_id");
       $stmt->bindparam(":edit_id",$edit_id);
@@ -114,36 +114,22 @@ public function dataview($query) { // Read: Renders DB entries to index.php.
           A
         </div>
         <!--<div data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal" class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
-        <div class="contact col-lg-11" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
-          <div class="col-lg-1">
-            <!-- Pic of contact that a user can upload will go here. -->
-            Pic
-          </div>
-          <div class="col-lg-3">
+        <div class="contact contact-container" id="<?php print($row['id']);?>"> <!-- Read detailed contact card... Goes to edit for now -->
+
+          <div class="col-lg-3 name">
             <?php print($row['fname'] . " " . $row['lname']);?>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-4 email">
             <?php print($row['email']); ?>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-2 phone">
             <?php print($row['phone']); ?>
           </div>
-          <div class="col-lg-1">
-            <a data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal"><i class="material-icons">mode_edit</i></a>
+          <div class="col-lg-2 tools">
             <a data-toggle="modal" href="delete.php?id=<?php print($row['id']);?>" data-target="#delete-modal"><i class="material-icons">delete</i></i></a>
+            <a data-toggle="modal" href="edit.php?id=<?php print($row['id']);?>" data-target="#edit-modal"><i class="material-icons">mode_edit</i></a>
           </div>
         </div>
-        <!-- <td><?php print($row['id']); ?></td>
-        <td><?php print($row['fname']); ?></td>
-        <td><?php print($row['lname']); ?></td>
-        <td><?php print($row['email']); ?></td>
-        <td><?php print($row['phone']); ?></td>
-        <td align="center">
-        <a href="edit-data.php?edit_id=<?php print($row['id']); ?>"><i class="glyphicon glyphicon-edit"></i></a>
-      </td>
-      <td align="center">
-      <a href="delete.php?delete_id=<?php print($row['id']); ?>"><i class="glyphicon glyphicon-remove-circle"></i></a>
-    </td> -->
   </div>
   <?php
 }
@@ -188,7 +174,7 @@ public function paginglink($query,$records_per_page) {
       $previous =$current_page-1;
 
       echo "<li><a href='".$self."?page=1'>First</a></li>";
-      echo "<li><a href='".$self."?page=".$previous."'><</a></li>";
+      echo "<li><a href='".$self."?page=".$previous."'>«</a></li>";
     }
     for($i=1;$i<=$total_no_of_pages;$i++) {
       if($i==$current_page) {
@@ -200,7 +186,7 @@ public function paginglink($query,$records_per_page) {
     }
     if($current_page!=$total_no_of_pages) {
       $next=$current_page+1;
-      echo "<li><a href='".$self."?page=".$next."'>></a></li>";
+      echo "<li><a href='".$self."?page=".$next."'>»</a></li>";
       echo "<li><a href='".$self."?page=".$total_no_of_pages."'>Last</a></li>";
     }
     ?></ul><?php

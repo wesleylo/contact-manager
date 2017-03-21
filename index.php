@@ -28,13 +28,11 @@
       <!-- Sidebar -->
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-          <li class="sidebar-brand">
-            Groups
-          </li>
+          <li class="sidebar-brand">Groups</li>
           <li class="all-contacts">
             <a href="#"><i class="material-icons">contacts</i> <span class="group">All Contacts (100)</span></a>
           </li>
-          <li class="group-div">
+          <li class="groups">
             <a href="#"><i class="material-icons">group</i> <span class="group">Friends (20)</span></a>
           </li>
           <li class="add-group">
@@ -53,7 +51,7 @@
           if(isset($_GET['success']))
           {
             ?>
-              <!-- Go to page containing new entry and highlight? -->
+            <!-- Go to page containing new entry and highlight? -->
             <?php
           }
           else if(isset($_GET['failure']))
@@ -67,21 +65,41 @@
           }
           ?>
           <!-- Read contacts from DB here -->
+          <div class="row menu">
+            <div class="col-md-1">
+              <div class="form-group">
+                <h5>Show</h5>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <select id="s1" class="form-control">
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="25">25</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <h5>entires</h5>
+              </div>
+            </div>
+<div class="col-md-9">
+            <a data-toggle="modal" href="create.php" data-target="#create-modal" class="btn btn-raised btn-create">New Contact</a>
+          </div>
+          </div>
           <?php
           $query = "SELECT * FROM contacts";
           $records_per_page=10;
           $newquery = $crud->paging($query,$records_per_page);
           $crud->dataview($newquery); // Read and render contacts from DB.
           ?>
-          <div class="pagination-wrap">
+          <div class="pagination-wrap col-lg-12">
             <?php $crud->paginglink($query,$records_per_page); ?>
           </div>
         </div>
         <!-- End read contacts -->
-        <a data-toggle="modal" href="create.php" data-target="#create-modal">Create New Contact</a><br> <!-- Renders create.php in modal without POST request. -->
-        <a data-toggle="modal" href="edit.php" data-target="#edit-modal">Update/Edit Contact</a><br>
-        <a data-toggle="modal" href="read.php" data-target="#contact-card-modal">Read Detailed Contact Card</a><br>
-        <a data-toggle="modal" href="delete.php" data-target="#modal">Delete Contact</a> <!-- Do delete in class.crud.php -->
 
 
         <div class="modal fade text-center" id="create-modal">
@@ -92,6 +110,13 @@
         </div>
 
         <div class="modal fade text-center" id="edit-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade text-center" id="delete-modal">
           <div class="modal-dialog">
             <div class="modal-content">
             </div>
