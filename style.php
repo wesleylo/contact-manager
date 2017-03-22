@@ -58,9 +58,15 @@
           <div class="col-md-12 section">
             <span class="anchor" id="colors"></span>
             <h3>Colors</h3>
-            <p style="color: #2a56c6;">#2a56c6</p>
-            <p style="color: #009688;">#009688</p>
-            <p style="color: #ff1700;">#ff1700</p>
+            <div class="col-md-4 color" style="background-color: #2a56c8">
+              <span class="hex">#f44336</span>
+            </div>
+            <div class="col-md-4 color" style="background-color: #009688">
+              <span class="hex">#009688</span>
+            </div>
+            <div class="col-md-4 color" style="background-color: #ff1700">
+              <span class="hex">#ff1700</span>
+            </div>
           </div>
 
           <div class="col-md-12">

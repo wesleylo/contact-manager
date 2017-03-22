@@ -21,6 +21,7 @@
             </div>
           </ul>
         </div>
+        <a class="navbar-brand navbar-brand-sm" href="index.php">Contact Manager</a>
       </div>
     </div>
 
@@ -66,6 +67,7 @@
           ?>
           <!-- Read contacts from DB here -->
           <div class="row menu-container">
+            <a data-toggle="modal" href="create.php" data-target="#create-modal" class="btn btn-raised btn-block btn-create">New Contact</a>
             <div class="col-md-1 col-sm-1 entries-per">
               <div class="form-group">
                 <h5>Show</h5>
@@ -74,7 +76,8 @@
             <div class="col-md-1 col-sm-1 entries-per">
               <div class="form-group">
                 <select id="entries" class="form-control">
-                  <option value="10">10</option>
+                  <option value="5">5</option>
+                  <option value="10" selected>10</option>
                   <option value="15">15</option>
                   <option value="25">25</option>
                 </select>
@@ -129,8 +132,7 @@
     <!-- /#wrapper -->
     <footer class="footer navbar-fixed-bottom">
       <div class="container-fluid footer-container">
-        <p class="text-muted"><a href="style.php">Style guide</a></p>
-        <p class="text-muted">Copyright © 2017 <a href="//github.com/wesleylo/contact-manager">Wesley Lo</a></p>
+        <p class="text-muted">Copyright © 2017, <a href="//github.com/wesleylo/contact-manager">Wesley Lo</a> -- <a href="style.php">Style guide</a></p>
       </div>
     </footer>
 
